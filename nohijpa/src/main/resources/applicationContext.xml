@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
     <!-- 配置自动扫描的包,扫描service层,service上面有注解就直接被spring容器实例化 -->
-    <context:component-scan base-package="com.zxy.service"/>
+    <context:component-scan base-package="org.nohi.service"/>
     <!-- 1. 配置数据源 -->
     <context:property-placeholder location="classpath:db.properties"/>
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -30,7 +30,7 @@
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
         </property>
         <!-- 配置包扫描，扫描实体 -->
-        <property name="packagesToScan" value="com.zxy.entity"/>
+        <property name="packagesToScan" value="org.nohi.entity"/>
         <property name="jpaProperties">
             <props>
                 <!-- 生成的数据表的列的映射策略 -->
@@ -55,6 +55,6 @@
 
     <!-- 5. 配置 SpringData,需要加入  jpa 的命名空间 -->
     <!-- base-package: 扫描 Repository Bean 所在的 package -->
-    <jpa:repositories base-package="com.zxy.dao" entity-manager-factory-ref="entityManagerFactory">
+    <jpa:repositories base-package="org.nohi.dao" entity-manager-factory-ref="entityManagerFactory">
     </jpa:repositories>
 </beans>
