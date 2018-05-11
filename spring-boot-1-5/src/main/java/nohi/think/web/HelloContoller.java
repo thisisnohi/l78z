@@ -13,7 +13,7 @@ public class HelloContoller {
 
 	@RequestMapping(value = "/{name}" )
 	public String sayHello(@PathVariable(value = "name")String name){
-		System.out.println("name:" + name);
+		System.out.println("HelloContoller name:" + name);
 		return "hello " + name;
 	}
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOG_FIEL_NAME" value="AGENT"/>
+    <!-- 文件输出格式 -->
+    <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <!-- dev文件路径 -->
+    <springProperty scope="context" name="logPath" source="log.path"/>
+    <springProperty scope="context" name="logFileName" source="log.fileName"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ch.qos.logback.core.rolling.RollingFileAppender 文件日志输出 -->
+    <appender name="DEV-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--不能有这项配置！！！！！-->
+        <!--<Encoding>UTF-8</Encoding>-->
+        <File>${logPath}/${logFileName}_debug.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logPath}/${logFileName}_debug.%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>10MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${PATTERN}</pattern>
+        </layout>
+    </appender>
+
+    <logger name="cn.com.xyrx" level="DEBUG"/>
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.hibernate" level="WARN"/>
+    <logger name="org.thymeleaf" level="WARN"/>
+    <logger name="org.quartz" level="WARN"/>
+
+    <logger name="springfox" level="WARN"/>
+    <logger name="org.apache" level="WARN"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="DEV-FILE"/>
+    </root>
+ 
+
+</configuration>
