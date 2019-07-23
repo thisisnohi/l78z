@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>nohithink-spring-boot-1.5 thymeleaf</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<!-- 字符串替换 -->
+<span th:text="'Welcome to our application, ' + ${name} + '!'" /><br>
+<span th:text="|Welcome to our application, ${name}!|" /><br>
+
+<!-- 运算符 -->
+<h2>运算符 </h2>
+<span th:with="isEven=(${count1} % 2 == 0)" th:text="count1111111" >count1</span><br>
+<span th:with="isEven=(${count2} % 2 == 0)" th:text="count2222222" >count2</span><br>
+<span th:if="${count1} &gt; 1" th:text="'count1 $ge 1 ?' + ( (${count1} &gt; 1) ? 'y' : 'n' ) " >count1</span><br>
+<span th:if="${count1 ge 1}" th:text="'count1=' + ${count1} + ' >= 1 ? ' + ( (${count1 ge 1}) ? 'y' : 'n' ) " >count1</span><br>
+
+<!-- 5.条件 if/unless-->
+<h3>if unless </h3>
+<span th:unless="${count1 != 1}" th:text="th_unless" >count1</span><br>
+<span th:if="${count1 == 1}" th:text="th_if" >count1</span><br>
+
+<h3>Switch</h3>
+<div th:switch="${count2}">
+    <p th:case="'1'">User is an administrator</p>
+    <p th:case="#{count2 == 2}">count2==2</p>
+    <p th:case="'2'">case when '2'</p>
+</div>
+<div th:switch="${count2}">
+    <p th:case="'1'">User is an administrator</p>
+    <p th:case="'2'">case when '2'</p>
+</div>
+
+<h2>循环 </h2>
+<table>
+    <tr>
+        <th>UID</th>
+        <th>NAME</th>
+        <th>AGE</th>
+        <th>ADDRESS</th>
+    </tr>
+    <tr th:each="user : ${userList}">
+        <td th:text="${user.uid}">Onions</td>
+        <td th:text="${user.name}">2.41</td>
+        <td th:text="${user.age > 18}? '成人' : '小孩'">yes</td>
+        <td th:text="${user.address}">yes</td>
+    </tr>
+</table>
+<h2>Utilities</h2>
+<span th:text="${#dates.createNow()}" /><br>
+<span th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm')}" /><br>
+
+
+</body>
+</html>

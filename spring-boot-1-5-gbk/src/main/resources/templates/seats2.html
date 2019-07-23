@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="model/jquery.seat-charts/jquery.seat-charts.css">
+    <link rel="stylesheet" href="css/index_q.css">
+    <script src="model/jquery/jquery-1.12.4.min.js"></script>
+    <script src="model/jquery.seat-charts/jquery.seat-charts.js"></script>
+    <script src="js/index_q.js"></script>
+</head>
+<body>
+<!--选择座位功能-->
+<div class="container middle htm1">
+    <div class="loding">
+        <div id="seat-map" class="autoScroll">
+            <div>北&nbsp;当前房间<span class="">401</span></div>
+        </div>
+        <!--loding动画+start-->
+        <div id="circularG">
+            <div id="circularG_1" class="circularG"></div>
+            <div id="circularG_2" class="circularG"></div>
+            <div id="circularG_3" class="circularG"></div>
+            <div id="circularG_4" class="circularG"></div>
+            <div id="circularG_5" class="circularG"></div>
+            <div id="circularG_6" class="circularG"></div>
+            <div id="circularG_7" class="circularG"></div>
+            <div id="circularG_8" class="circularG"></div>
+        </div>
+        <!--loding动画-end-->
+    </div>
+    <div class="booking-details">
+        <p><span style="color: #5bc0de">小明</span>同学，</p>
+        <P>选择你的预约时间和座位</P>
+        <div>
+            <form action="" method="post" id="form1">
+                <p class="font1">房间：</p>
+                <select title="" class="cClass font1" name="cClass">
+                    <option>图书馆一楼101</option>
+                    <option>图书馆一楼102</option>
+                    <option>图书馆二楼201</option>
+                    <option>图书馆二楼202</option>
+                    <option>图书馆三楼301</option>
+                    <option>图书馆三楼302</option>
+                    <option>图书馆四楼401</option>
+                    <option>图书馆四楼402</option>
+                </select>
+                <p class="font1">选择日期：</p>
+                <select title="" class="cTimeDay font1" name="cTimeDay">
+                    <option>今天</option>
+                    <option>明天</option>
+                    <option>后天</option>
+                </select>
+                <p>开始时间：</p>
+                <select title="" class="cTimeStart font1" name="cTimeStart" onclick="check()">
+                    <option>7:00</option>
+                    <option>8:00</option>
+                    <option>9:00</option>
+                    <option>10:00</option>
+                    <option>11:00</option>
+                    <option>12:00</option>
+                    <option>13:00</option>
+                    <option>14:00</option>
+                    <option>15:00</option>
+                    <option>16:00</option>
+                    <option>17:00</option>
+                    <option>18:00</option>
+                    <option>19:00</option>
+                    <option>20:00</option>
+                    <option>21:00</option>
+                </select>
+                <p>结束时间：</p>
+                <select title="" class="cTimeOver font1" name="cTimeOver" onclick="check()">
+                    <option>8:00</option>
+                    <option>9:00</option>
+                    <option>10:00</option>
+                    <option>11:00</option>
+                    <option>12:00</option>
+                    <option>13:00</option>
+                    <option>14:00</option>
+                    <option>15:00</option>
+                    <option>16:00</option>
+                    <option>17:00</option>
+                    <option>18:00</option>
+                    <option>19:00</option>
+                    <option>20:00</option>
+                    <option>21:00</option>
+                    <option>22:00</option>
+                </select>
+                <!--座位号-->
+                <input type="hidden" value="" id="hidden" name="num">
+                <p>座位：</p>
+                <!--显示选择的座位-->
+                <div class="cSeats"><ul id="selected-seats"></ul></div>
+                <button type="submit" class="checkout-button">确定</button>
+                <button type="reset" class="checkout-button">重置</button>
+            </form>
+        </div>
+        <div id="legend"></div>
+    </div>
+</div>
+</body>
+</html>
