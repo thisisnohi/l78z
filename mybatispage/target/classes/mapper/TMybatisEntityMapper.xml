@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.nohi.mybatis.dao.TMybatisEntityDao">
+  <resultMap id="BaseResultMap" type="org.nohi.mybatis.entity.TMybatisEntity">
+    <id column="t_id" jdbcType="INTEGER" property="tId" />    <!-- 主键 -->
+    <result column="t_name" jdbcType="VARCHAR" property="tName" />    <!-- 姓名 -->
+    <result column="t_birthday" jdbcType="DATE" property="tBirthday" />    <!-- 生日 -->
+    <result column="t_salay" jdbcType="DECIMAL" property="tSalay" />    <!-- 你猜 -->
+  </resultMap>
+  <sql id="Base_Column_List">
+    t_id, t_name, t_birthday, t_salay
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from T_MYBATIS
+    where t_id = #{tId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByExample" parameterType="org.nohi.mybatis.entity.TMybatisEntity" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from T_MYBATIS
+    <where>
+    <if test="tId != null">
+       AND t_id = #{tId,jdbcType=INTEGER}
+    </if>
+    <if test="tName != null and tName != '' ">
+       AND t_name = #{tName,jdbcType=VARCHAR}
+    </if>
+    <if test="tBirthday != null">
+       AND t_birthday = #{tBirthday,jdbcType=DATE}
+    </if>
+    <if test="tSalay != null">
+       AND t_salay = #{tSalay,jdbcType=DECIMAL}
+    </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from T_MYBATIS
+    where t_id = #{tId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.nohi.mybatis.entity.TMybatisEntity">
+    insert into T_MYBATIS (t_id, t_name, t_birthday,
+      t_salay)
+    values (#{tId,jdbcType=INTEGER}, #{tName,jdbcType=VARCHAR}, #{tBirthday,jdbcType=DATE},
+      #{tSalay,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.nohi.mybatis.entity.TMybatisEntity">
+    insert into T_MYBATIS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tId != null">
+        t_id,
+      </if>
+      <if test="tName != null">
+        t_name,
+      </if>
+      <if test="tBirthday != null">
+        t_birthday,
+      </if>
+      <if test="tSalay != null">
+        t_salay,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tId != null">
+        #{tId,jdbcType=INTEGER},
+      </if>
+      <if test="tName != null">
+        #{tName,jdbcType=VARCHAR},
+      </if>
+      <if test="tBirthday != null">
+        #{tBirthday,jdbcType=DATE},
+      </if>
+      <if test="tSalay != null">
+        #{tSalay,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

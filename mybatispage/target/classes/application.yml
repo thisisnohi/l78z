@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    username: root
+    password: nohi1234
+    url: jdbc:mysql://127.0.0.1:3306/nohi?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: true
+    show-sql: true
+mybatis:
+  mapper-locations: mapper/*Mapper.xml
+  type-aliases-package: org.nohi.mybatis.entity
+
+#showSql
+logging:
+  level:
+    org:
+      nohi:
+        mybatis : debug
+#分页pageHelper
+#pagehelper:
+#  helper-dialect: mysql
+#  reasonable: true
+#  support-methods-arguments: true
