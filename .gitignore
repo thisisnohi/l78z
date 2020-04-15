@@ -1,6 +1,8 @@
 /target/
+/classes/
 !.mvn/wrapper/maven-wrapper.jar
 
+*.class
 
 ### IntelliJ IDEA ###
 .idea
@@ -9,3 +11,6 @@
 *.ipr
 
 .mvn
+
+### gradel
+.gradle
