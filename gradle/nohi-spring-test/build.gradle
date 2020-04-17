@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    // core
+    compile group: 'org.springframework', name:'spring-context', version: '5.2.4'
+    // web
+    compile group: 'org.springframework', name:'spring-web', version: '5.2.4'
+    compile group: 'org.springframework', name:'spring-webmvc', version: '5.2.4'
+
+    // tomcat
+    compile group: 'org.apache.tomcat.embed', name:'tomcat-embed-core', version: '9.0.33'
+    compile group: 'org.apache.tomcat.embed', name:'tomcat-embed-jasper', version: '9.0.33'
+
+    // servlet-api
+    optional("javax.servlet:javax.servlet-api:3.1.0")
+
+    compile group: 'com.alibaba', name:'fastjson', version: '1.2.67'
+}
