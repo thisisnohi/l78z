@@ -18,7 +18,7 @@ public class Testtomcat {
         System.out.println("====");
 
         Tomcat tomcat = new Tomcat();
-        tomcat.setPort(8088);
+        tomcat.setPort(8089);
         tomcat.setHostname("127.0.0.1");
         tomcat.setBaseDir("."); // tomcat 信息保存在项目下
 
@@ -26,13 +26,10 @@ public class Testtomcat {
         Context context = tomcat.addWebapp("/boot", "/Users/nohi/tmp/html");
         HelloServlet helloServlet = new HelloServlet();
         tomcat.addServlet("/boot", "index", helloServlet);
-        context.addServletMappingDecoded("/index.do", "index");
+        context.addServletMappingDecoded("/index.html", "index");
 
         tomcat.start();
         tomcat.getServer().await();
-
-//        Testtomcat m = new Testtomcat();
-//        m.testtomcat();
     }
 
     @Test

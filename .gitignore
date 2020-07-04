@@ -14,3 +14,6 @@
 
 ### gradel
 .gradle
+/thinkinjava/target
+/gradle/nohi-spring-test/build/
+/gradle/nohi-spring-test/gradle/wrapper/
