@@ -18,7 +18,7 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <spring.version>5.2.4.RELEASE</spring.version>
     <!-- tomcat: 8.5.54 9.0.34 -->
-    <tomcat.version>8.5.54</tomcat.version>
+    <tomcat.version>9.0.36</tomcat.version>
   </properties>
 
   <dependencies>
