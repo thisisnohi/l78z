@@ -11,5 +11,71 @@
 
   <artifactId>itext7</artifactId>
 
+  <properties>
+    <java.version>1.8</java.version>
+    <itext.version>7.1.11</itext.version>
+    <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+    <druid-starter.version>1.1.10</druid-starter.version>
+    <tk.mybatis.starter.version>2.0.4</tk.mybatis.starter.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <!-- itext7 -->
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>itext7-core</artifactId>
+      <type>pom</type>
+      <version>${itext.version}</version>
+    </dependency>
+    <!--        中文字体-->
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>font-asian</artifactId>
+      <version>${itext.version}</version>
+    </dependency>
+
+    <!--        html转pdf工具-->
+    <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>html2pdf</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
+    <!-- 生成html模板 -->
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>2.3.30</version>
+    </dependency>
+
+    <!-- tool -->
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+      <version>4.5.7</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.70</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>18.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.18</version>
+    </dependency>
+  </dependencies>
 
 </project>
