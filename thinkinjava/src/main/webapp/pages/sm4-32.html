@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="application/javascript" src="../static/js/sm4-32.js"></script>
+  <script type="application/javascript" src="../static/js/1.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+
+
+  function hexToBytes(hex) {
+    for (var bytes = [], c = 0; c < hex.length; c += 2) {
+      // bytes.push(parseInt(hex.substr(c, 2), 16));
+      var b_value = parseInt(hex.substr(c, 2), 16)
+      if (b_value > 128) {
+        b_value = b_value - 256
+      }
+      bytes.push(b_value);
+    }
+
+    return bytes;
+  }
+
+  console.info("====111=======")
+  var text = "待加密的字符串"
+  var sKey ="qawsedrftgyhujik";
+  sKey = "124ABCDE7890CFE90303EAC31980BCAF";
+
+  var s4 = new SM4Util(sKey);
+  console.log("text:" + text);
+  var enSTr = s4.encryptData_ECB(text);
+  console.log("enSTr:" + enSTr);
+  // var deSTr = s4.encryptData_ECB(enSTr);
+  // console.log("deSTr:" + deSTr);
+
+  var keyBytes = hexToBytes(sKey);
+
+</script>
+</html>

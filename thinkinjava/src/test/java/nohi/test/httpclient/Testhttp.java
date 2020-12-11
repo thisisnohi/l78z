@@ -26,7 +26,7 @@ public class Testhttp {
         CloseableHttpResponse response = null;
         try {
             response = httpClient.execute(httpGet);
-            System.out.println(EntityUtils.toString(response.getEntity()));
+            System.out.println(EntityUtils.toString(response.getEntity(), "UTF-8"));
         } catch (IOException e) {
             e.printStackTrace();
         }
