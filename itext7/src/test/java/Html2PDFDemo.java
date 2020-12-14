@@ -1,5 +1,6 @@
 import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
+import com.itextpdf.io.font.FontConstants;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.font.otf.GlyphLine;
 import com.itextpdf.kernel.colors.Color;
@@ -92,7 +93,11 @@ public class Html2PDFDemo {
 
             // 添加事件，该事件拥有添加水印
             WaterMark waterMark = new WaterMark();
-            pdf.addEventHandler(PdfDocumentEvent.INSERT_PAGE, waterMark);
+//            pdf.addEventHandler(PdfDocumentEvent.INSERT_PAGE, waterMark);
+
+
+            // 添加页脚页
+            pdf.addEventHandler(PdfDocumentEvent.END_PAGE, new PageXofY(pdf));
 
 //            //Set the document to be tagged
 //            pdf.setTagged();
@@ -188,31 +193,28 @@ public class Html2PDFDemo {
     protected class PageXofY implements IEventHandler {
         protected PdfFormXObject placeholder;
         protected float side = 20;
-        protected float x = 300;
+        protected float x = 120;
         protected float y = 25;
         protected float space = 4.5f;
         protected float descent = 3;
         public PageXofY(PdfDocument pdf) {
-            placeholder =
-                    new PdfFormXObject(new Rectangle(0, 0, side, side));
+            placeholder = new PdfFormXObject(new Rectangle(0, 0, side, side));
         }
         @Override
         public void handleEvent(Event event) {
             PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
-            PdfDocument pdf = docEvent.getDocument();
             PdfPage page = docEvent.getPage();
-            int pageNumber = pdf.getPageNumber(page);
-            Rectangle pageSize = page.getPageSize();
-            PdfCanvas pdfCanvas = new PdfCanvas(page.getLastContentStream(), page.getResources(), pdf);
-            Canvas canvas = new Canvas(pdfCanvas, pdf, pageSize);
-            Paragraph p = new Paragraph().add("Page ").add(String.valueOf(pageNumber)).add(" of");
-            canvas.showTextAligned(p, x, y, TextAlignment.RIGHT);
-            pdfCanvas.addXObject(placeholder, x + space, y - descent);
-            pdfCanvas.release();
-        }
-        public void writeTotal(PdfDocument pdf) {
-            Canvas canvas = new Canvas(placeholder, pdf);
-            canvas.showTextAligned(String.valueOf(pdf.getNumberOfPages()), 0, descent, TextAlignment.LEFT);
+            int pageNum = docEvent.getDocument().getPageNumber(page);
+            int totalPageNum = docEvent.getDocument().getNumberOfPages();
+            PdfCanvas canvas = new PdfCanvas(page);
+            canvas.beginText();
+            canvas.setFontAndSize(getDefaultFont(), 10);
+            String text = "一二三    xxxxxxxxxx.js    查询时: 2020-12-14 17:19:29    第" + pageNum + "页/共" + totalPageNum + "页";
+            canvas.moveText(x, y);
+            canvas.showText(text);
+            canvas.endText();
+            canvas.stroke();
+            canvas.release();
         }
     }
 
