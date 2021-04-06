@@ -265,7 +265,7 @@ public class Html2PDFDemo {
         Map<String, String> para = new HashMap<String, String>();
         para.put("var1", "这个值是填充的变量");
         para.put("tab1", "<tr><td>1</td><td>第一个项目</td><td>第一个项目的具体内容</td></tr><tr><td>2</td><td>第二个项目</td><td>第二个项目的具体内容</td></tr>");
-        template("demo.html", para, path + "/abc.pdf");
+        template("demo.html", para, path + "/abc1.pdf");
     }
 
 }
