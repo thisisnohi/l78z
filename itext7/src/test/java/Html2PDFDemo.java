@@ -1,9 +1,6 @@
 import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.font.otf.GlyphLine;
-import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.colors.ColorConstants;
 import com.itextpdf.kernel.events.Event;
 import com.itextpdf.kernel.events.IEventHandler;
